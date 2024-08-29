@@ -6,6 +6,7 @@ import Benefits from './Benefits'
 import FAQ from './FAQ'
 import Partners from './Partners'
 import Footer from './Footer'
+import Realization from './Realization'
 
 const LandingPage = () => {
   return (
