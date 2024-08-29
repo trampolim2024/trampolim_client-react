@@ -24,16 +24,25 @@
     /* Classes para cores de texto */
 
     .text-blue {
-        @apply text-[#3A6ABE]
+        @apply text-[#3A6ABE];
     }
 
     .text-orange {
-        @apply text-[#F79B4B]
+        @apply text-[#F79B4B];
     }
 
     /* Classes para backgrounds */
 
     .background-white {
-        background-color: #F5F5F5;
+     
+        @apply bg-[#F5F5F5];
+    }
+
+    .background-blue {
+        @apply bg-[#3A6ABE];
+    }
+
+    .background-orange {
+        @apply bg-[#F79B4B];
     }
 }

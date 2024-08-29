@@ -11,10 +11,10 @@ const Hero = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center relative' >
-                <span className='absolute top-0 mt-10 text-orange text-xl font-normal uppercase'>Agreste De Pernambuco</span>
+                <span className='absolute top-0 mt-10 text-orange text-xl font-semibold uppercase'>Agreste De Pernambuco</span>
 
                 <MapaAgreste />
-                <span className='absolute bottom-0 mb-10 text-orange text-xl font-normal uppercase'> <span className='hover:text-blue transition-all duration-300 cursor-pointer'>Clique em sua cidade</span> no mapa para mais informações</span>
+                <span className='absolute bottom-0 mb-10 text-orange text-xl font-semibold uppercase'> <span className='hover:text-blue transition-all duration-300 cursor-pointer'>Clique em sua cidade</span> no mapa para mais informações</span>
             </div>
 
         </section>

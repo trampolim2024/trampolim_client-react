@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <div className='w-full h-[20%] p-3 flex items-center justify-around shadow-xl background-white'>
+        <div className='w-full h-[20vh] p-3 flex items-center justify-around shadow-xl background-white'>
             <img src="logos/trampolim-header.svg" alt="Logo do Programa Trampolim" className=''/>
 
             <div className='flex items-center w-[50%] justify-evenly '>
