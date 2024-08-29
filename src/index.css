@@ -45,4 +45,14 @@
     .background-orange {
         @apply bg-[#F79B4B];
     }
+
+    .background-purple {
+        @apply bg-[#8B96C2];
+    }
+
+    /* Botões */
+
+    .orange-button {
+        @apply bg-[#F79B4B] p-3 rounded-lg outline-none border-none text-white max-w-[350px] hover:bg-[#c97b37] transition-all duration-300 cursor-pointer ;
+    }
 }

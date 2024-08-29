@@ -2,6 +2,10 @@ import React from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import About from './About'
+import Benefits from './Benefits'
+import FAQ from './FAQ'
+import Partners from './Partners'
+import Footer from './Footer'
 
 const LandingPage = () => {
   return (
@@ -9,6 +13,10 @@ const LandingPage = () => {
         <Header/>
         <Hero/>
         <About/>
+        <Benefits/>
+        <FAQ/>
+        <Partners/>
+        <Footer/>
     </main>
   )
 }

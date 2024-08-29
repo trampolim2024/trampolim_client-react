@@ -5,7 +5,7 @@ import Dashboard from './Dashboard';
 const About = () => {
     const videoId = 'dQw4w9WgXcQ'; // ID do vídeo do YouTube
     return (
-        <section className='h-screen flex flex-col items-center justify-center' >
+        <section className='h-auto flex flex-col items-center justify-center' >
 
             <div className='flex items-center justify-around'>
                 <div className='flex flex-col w-[40%] gap-4'>
