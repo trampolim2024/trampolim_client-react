@@ -19,7 +19,7 @@ const About = () => {
                 </div>
 
 
-                <div className='background-white w-[800px] h-[550px] rounded-3xl shadow-lg flex items-center justify-center'>
+                <div className='bg-[#F5F5F5]/85 w-[800px] h-[550px] rounded-3xl shadow-lg flex items-center justify-center'>
                     <YouTube videoId={videoId} opts={{ width: '700px', height: '450px' }} />
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdPerson } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 const AboutAppraiser = () => {
     return (
@@ -23,10 +24,14 @@ const AboutAppraiser = () => {
 
             </div>
 
-            <button className='background-orange uppercase  w-[450px] h-[100px] text-3xl font-semibold text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-[#c97b37] transition-all duration-300 cursor-pointer'>
-                <MdPerson size={40} className='text-white' />
-                Inscrição avaliador
-            </button>
+
+            <Link to="/inscricao-avaliador">
+                <button className='background-orange uppercase  w-[450px] h-[100px] text-3xl font-semibold text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-[#c97b37] transition-all duration-300 cursor-pointer'>
+                    <MdPerson size={40} className='text-white' />
+                    Inscrição avaliador
+                </button>
+            </Link>
+
 
 
         </section>
