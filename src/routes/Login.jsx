@@ -26,7 +26,7 @@ const Login = () => {
             Esqueci minha senha!
           </span>
 
-          <Link to="/home" className="font-bold text-center p-1 py-2 background-orange text-white rounded-lg outline-none border-none text-xl hover:background-blue duration-300 transition-all">
+          <Link to="/painel" className="font-bold text-center p-1 py-2 background-orange text-white rounded-lg outline-none border-none text-xl hover:background-blue duration-300 transition-all">
             <button>
               Login
             </button>
