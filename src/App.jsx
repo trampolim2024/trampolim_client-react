@@ -4,7 +4,7 @@ import Appraiser from "./pages/Appraiser";
 import AppraiserSignup from "./routes/AppraiserSignup";
 import EnterprisingSignup from "./routes/EnterprisingSIgnup";
 import Login from "./routes/Login";
-import Home from "./pages/Home";
+import Panel from "./pages/Panel";
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
         <Route path="/inscricao-avaliador" element={<AppraiserSignup/>}/>
         <Route path="/inscricao-empreendedor" element={<EnterprisingSignup/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/painel" element={<Panel/>}/>
       </Routes>
     </Router>
   )
