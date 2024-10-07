@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import User from './User'
 
 const HeaderPanel = () => {
     return (
@@ -18,7 +19,7 @@ const HeaderPanel = () => {
                     Eventos
                 </a>
 
-                <Link to="/avaliador" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
+                <Link to="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
                     Certificados
                 </Link>
 
@@ -26,7 +27,7 @@ const HeaderPanel = () => {
                     Diagnósticos
                 </a>
 
-              
+                <User/>
             </div>
         </div>
     )
