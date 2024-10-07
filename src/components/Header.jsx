@@ -23,12 +23,16 @@ const Header = () => {
                 </Link>
 
                 <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-                    Conteúdos
+                    Eventos
                 </a>
 
                 <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
                     FAQ & Contatos
                 </a>
+
+                <Link to="/login" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
+                    Login
+                </Link>
             </div>
         </div>
     )
