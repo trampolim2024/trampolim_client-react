@@ -2,7 +2,7 @@ import React from "react";
 
 const Filter = () => {
   return (
-    <aside className="h-[80vh] flex flex-col background-white rounded-xl shadow-2xl p-3">
+    <aside className="h-[80vh] w-[20vw] flex flex-col background-white rounded-xl shadow-2xl p-3">
 
       <div className="flex flex-col my-5">
         <h1 className="text-blue uppercase font-semibold text-2xl">Filtros de pesquisa</h1>
