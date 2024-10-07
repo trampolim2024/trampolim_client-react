@@ -4,7 +4,7 @@ import Appraiser from "./pages/Appraiser";
 import AppraiserSignup from "./routes/AppraiserSignup";
 import EnterprisingSignup from "./routes/EnterprisingSIgnup";
 import Login from "./routes/Login";
-import Home from "./routes/Home";
+import Home from "./pages/Home";
 
 function App() {
 
