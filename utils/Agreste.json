@@ -508,7 +508,7 @@
         },
         "properties": {
           "GEOCODIG_M": "2600500",
-          "name": "Águas Belas",
+          "name": "ÁguasBelas",
           "SEDE": "0",
           "AREA": 885.979,
           "PERIMETRO": 159.2,
@@ -1152,7 +1152,7 @@
         },
         "properties": {
           "GEOCODIG_M": "2613206",
-          "name": "São João",
+          "name": "SaoJoao",
           "SEDE": "0",
           "AREA": 258.312,
           "PERIMETRO": 73.331,
@@ -1280,7 +1280,7 @@
         },
         "properties": {
           "GEOCODIG_M": "2602100",
-          "name": "Bom Conselho",
+          "name": "BomConselho",
           "SEDE": "0",
           "AREA": 786.203,
           "PERIMETRO": 166.105,

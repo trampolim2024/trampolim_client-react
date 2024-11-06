@@ -5,7 +5,7 @@ import AppraiserSignup from "./routes/AppraiserSignup";
 import EnterprisingSignup from "./routes/EnterprisingSIgnup";
 import Login from "./routes/Login";
 import Panel from "./pages/Panel";
-import PrivateRoutes from "./utils/PrivateRoutes"
+
 
 function App() {
 
@@ -18,11 +18,9 @@ function App() {
         <Route path="/inscricao-avaliador" element={<AppraiserSignup />} />
         <Route path="/inscricao-empreendedor" element={<EnterprisingSignup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/painel" element={<Panel />} />
 
-        <Route element={<PrivateRoutes />}>
-          <Route path="/painel" element={<Panel />} />
-        </Route>
-        
+
       </Routes>
     </Router>
   )
