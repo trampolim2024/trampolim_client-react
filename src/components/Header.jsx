@@ -10,21 +10,17 @@ const Header = () => {
             </Link>
 
             <div className='flex items-center w-[50%] justify-evenly '>
-                <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-                    Portal
-                </a>
+            
 
-                <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-                    Sobre
-                </a>
+                <Link to="/empreendedor" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
+                    Empreendedor
+                </Link>
 
                 <Link to="/avaliador" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
                     Avaliador
                 </Link>
 
-                <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-                    Eventos
-                </a>
+                
 
                 <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
                     FAQ & Contatos

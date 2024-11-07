@@ -7,6 +7,7 @@ import Login from "./routes/Login";
 import Panel from "./pages/Panel";
 import ProtectedRoutes from "../utils/ProtectedRoutes";
 import { ToastContainer } from "react-toastify";
+import Enterprising from "./pages/Enterprising";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="/" element={<LandingPage />} />
           <Route path="/avaliador" element={<Appraiser />} />
+          <Route path="/empreendedor" element={<Enterprising />} />
           <Route path="/inscricao-avaliador" element={<AppraiserSignup />} />
           <Route path="/inscricao-empreendedor" element={<EnterprisingSignup />} />
           <Route path="/login" element={<Login />} />
