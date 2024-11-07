@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
@@ -22,7 +22,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verificar se todos os campos estão preenchidos
     if (!formData.email || !formData.senha) {
       toast.error("Por favor, preencha todos os campos.");
       return;
@@ -43,11 +42,7 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         const { token } = data;
-
-        // Armazenar o token no localStorage
         localStorage.setItem("token", token);
-
-        // Exibir mensagem de sucesso
         toast.success("Login realizado com sucesso!");
 
         // Redirecionar para o painel
@@ -66,49 +61,42 @@ const Login = () => {
 
   return (
     <>
-     <ToastContainer />
-    <section className="h-screen flex items-center justify-center bg-orange-gradient">
-      <div className="h-[90vh] rounded-2xl w-[35vw] bg-white flex flex-col items-center justify-center shadow-2xl">
-        <img src="/logos/trampolim-hero.png" alt="Logo do programa trampolim" />
-
-        <h2 className="text-blue font-semibold text-3xl my-5">
-          Bem vindo(a)!
-        </h2>
-
-        {error && <p className="text-red-500">{error}</p>}
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <input
-            type="text"
-            name="email"
-            className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="senha"
-            className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
-            placeholder="Senha"
-            value={formData.senha}
-            onChange={handleChange}
-          />
-          <span className="text-blue text-base border-b border-transparent hover:border-orange-600 w-fit duration-300 transition-all cursor-pointer">
-            Esqueci minha senha!
-          </span>
-
-          <button
-            type="submit"
-            className="font-bold text-center p-1 py-2 background-orange text-white rounded-lg outline-none border-none text-xl hover:background-blue duration-300 transition-all"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-    </section>
+      <ToastContainer />
+      <section className="h-screen flex items-center justify-center bg-orange-gradient">
+        <div className="h-[90vh] rounded-2xl w-[35vw] bg-white flex flex-col items-center justify-center shadow-2xl">
+          <img src="/logos/trampolim-hero.png" alt="Logo do programa trampolim" />
+          <h2 className="text-blue font-semibold text-3xl my-5">Bem vindo(a)!</h2>
+          {error && <p className="text-red-500">{error}</p>}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <input
+              type="text"
+              name="email"
+              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="senha"
+              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
+              placeholder="Senha"
+              value={formData.senha}
+              onChange={handleChange}
+            />
+            <span className="text-blue text-base border-b border-transparent hover:border-orange-600 w-fit duration-300 transition-all cursor-pointer">
+              Esqueci minha senha!
+            </span>
+            <button
+              type="submit"
+              className="font-bold text-center p-1 py-2 background-orange text-white rounded-lg outline-none border-none text-xl hover:background-blue duration-300 transition-all"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </section>
     </>
-    
   );
 };
 
