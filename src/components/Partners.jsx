@@ -1,5 +1,10 @@
 import React from 'react'
-import { FaFileAlt, FaUser } from 'react-icons/fa'
+import { FaFileAlt} from 'react-icons/fa'
+import EspacoColinas  from "/logos/espacocolinas-logo.png"   
+import SebraePe from "/logos/sebraepe-logo.png"  
+import SeteColinas from "/logos/setecolinas-logo.png"             
+import Softex from "/logos/softex-logo.png"
+import Upe from "/logos/upe-logo.png"  
 
 const Partners = () => {
     return (
@@ -28,19 +33,23 @@ const Partners = () => {
 
             <div className='flex items-center w-full justify-around'>
                 <div className='w-[300px] h-[300px] rounded-full background-white border-2 border-[#F79B4B] flex items-center justify-center'>
-                    <FaUser className='text-blue' size={100} />
+                    <img src={EspacoColinas} alt="" />  
+                </div>  
+
+                <div className='w-[300px] h-[300px] rounded-full background-white border-2 border-[#F79B4B] flex items-center justify-center'>
+                    <img src={SebraePe} alt="" />
                 </div>
 
                 <div className='w-[300px] h-[300px] rounded-full background-white border-2 border-[#F79B4B] flex items-center justify-center'>
-                    <FaUser className='text-blue' size={100} />
+                    <img src={SeteColinas} alt="" />
                 </div>
 
                 <div className='w-[300px] h-[300px] rounded-full background-white border-2 border-[#F79B4B] flex items-center justify-center'>
-                    <FaUser className='text-blue' size={100} />
+                    <img src={Softex} alt="" />
                 </div>
 
                 <div className='w-[300px] h-[300px] rounded-full background-white border-2 border-[#F79B4B] flex items-center justify-center'>
-                    <FaUser className='text-blue' size={100} />
+                    <img src={Upe} alt="" className="w-[200px]"  />
                 </div>
             </div>
         </section>
