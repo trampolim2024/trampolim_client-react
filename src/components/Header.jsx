@@ -9,7 +9,7 @@ const Header = () => {
                 <img src="logos/trampolim-header.svg" alt="Logo do Programa Trampolim" className='' />
             </Link>
 
-            <div className='flex items-center w-[50%] justify-evenly '>
+            <div className='flex items-center w-[30%] justify-evenly '>
             
 
                 <Link to="/empreendedor" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
@@ -20,13 +20,9 @@ const Header = () => {
                     Avaliador
                 </Link>
 
-                
+               
 
-                <a href="#" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-                    FAQ & Contatos
-                </a>
-
-                <Link to="/login" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
+                <Link to="/login" className='background-orange p-2 px-5 rounded-lg font-semibold text-blue text-lg hover:text-orange hover:background-blue transition-all duration-300'>
                     Login
                 </Link>
             </div>
