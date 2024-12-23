@@ -86,151 +86,153 @@ const EnterprisingSignup = () => {
                         <h2 className='text-blue text-4xl uppercase'>Inscrição empreendedor</h2>
                     </div>
 
-                    <div className='flex items-center justify-center gap-10 w-[75vw] border-b-2 border-blue-300 pb-10'>
+                    <div className='flex flex-col items-center justify-center w-[75vw] gap-7 border-b-2 border-blue-300 pb-10'>
 
-                        <div className='flex flex-col'>
-                            <label htmlFor="nomeCompleto">
-                                Nome completo
-                                <div className='relative'>
-                                    <FaUser className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                    <input
-                                        type="text"
-                                        id="nomeCompleto"
-                                        className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
-                                        name="nomeCompleto" // O name precisa ser igual ao nome da chave no estado
-                                        value={formData.nomeCompleto}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-                            <label htmlFor="dataNascimento">
-                                Data de nascimento
-                                <div className='relative'>
-                                    <FaCalendarAlt className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                    <input
-                                        type="date"
-                                        id="dataNascimento"
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
-                                        name="dataNascimento"
-                                        value={formData.dataNascimento}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-
-
-
-                            <label htmlFor="grau_escolaridade">
-                                Grau de escolaridade
-                                <div className="relative">
-                                    <FaGraduationCap className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
-                                    <select
-                                        id="grau_escolaridade"
-                                        name="grau_escolaridade"
-                                        className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
-                                        value={formData.grau_escolaridade}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="fundamental">Fundamental</option>
-                                        <option value="medio">Médio</option>
-                                        <option value="superior">Superior</option>
-                                    </select>
-                                </div>
-                            </label>
+                        <div className='flex items-center justify-center gap-10'>
+                            <div className='flex flex-col gap-7'>
+                                <label htmlFor="nomeCompleto">
+                                    Nome completo
+                                    <div className='relative'>
+                                        <FaUser className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
+                                        <input
+                                            type="text"
+                                            id="nomeCompleto"
+                                            className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
+                                            name="nomeCompleto" // O name precisa ser igual ao nome da chave no estado
+                                            value={formData.nomeCompleto}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </label>
+                                <label htmlFor="dataNascimento">
+                                    Data de nascimento
+                                    <div className='relative'>
+                                        <FaCalendarAlt className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
+                                        <input
+                                            type="date"
+                                            id="dataNascimento"
+                                            className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
+                                            name="dataNascimento"
+                                            value={formData.dataNascimento}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </label>
 
 
-                            <label htmlFor="area_atuacao">
-                                Área de atuação
-                                <div className="relative">
-                                    <FaBriefcase className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
-                                    <select
-                                        id="area_atuacao"
-                                        name="area_atuacao"
-                                        className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
-                                        value={formData.area_atuacao}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="opt1">opt1</option>
-                                        <option value="opt2">opt2</option>
-                                        <option value="opt3">opt3</option>
-                                    </select>
-                                </div>
-                            </label>
+
+                                <label htmlFor="grau_escolaridade">
+                                    Grau de escolaridade
+                                    <div className="relative">
+                                        <FaGraduationCap className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
+                                        <select
+                                            id="grau_escolaridade"
+                                            name="grau_escolaridade"
+                                            className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
+                                            value={formData.grau_escolaridade}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="fundamental">Fundamental</option>
+                                            <option value="medio">Médio</option>
+                                            <option value="superior">Superior</option>
+                                        </select>
+                                    </div>
+                                </label>
+
+
+                                <label htmlFor="area_atuacao">
+                                    Área de atuação
+                                    <div className="relative">
+                                        <FaBriefcase className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
+                                        <select
+                                            id="area_atuacao"
+                                            name="area_atuacao"
+                                            className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
+                                            value={formData.area_atuacao}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="opt1">opt1</option>
+                                            <option value="opt2">opt2</option>
+                                            <option value="opt3">opt3</option>
+                                        </select>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div className='flex flex-col gap-7'>
+                                <label htmlFor="genero">
+                                    Gênero
+                                    <div className="relative">
+                                        <FaVenusMars className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
+                                        <select
+                                            id="genero"
+                                            name="genero"
+                                            className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
+                                            value={formData.genero}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="" disabled>Selecionar...</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Feminino">Feminino</option>
+                                            <option value="Outro">Outro</option>
+                                        </select>
+                                    </div>
+                                </label>
+
+
+                                <label htmlFor="email">
+                                    Email
+                                    <div className='relative'>
+                                        <FaEnvelope className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"  // Adicionei name aqui para o handleChange funcionar
+                                            className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </label>
+
+                                <label htmlFor="cpf">
+                                    CPF
+                                    <div className='relative'>
+                                        <FaIdCard className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
+                                        <input
+                                            type="text"
+                                            id="cpf"
+                                            name="cpf"  // Adicionei name aqui para o handleChange funcionar
+                                            className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
+                                            value={formData.cpf}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </label>
+
+                                <label htmlFor="telefone">
+                                    Telefone
+                                    <div className='relative'>
+                                        <FaPhone className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
+                                        <input
+                                            type="text"
+                                            id="telefone"
+                                            name="telefone"  // Adicionei name aqui para o handleChange funcionar
+                                            className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
+                                            value={formData.telefone}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </label>
+
+                            </div>
                         </div>
 
-                        <div className='flex flex-col'>
-                            <label htmlFor="genero">
-                                Gênero
-                                <div className="relative">
-                                    <FaVenusMars className="absolute left-2 top-1/2 transform -translate-y-1/2 text-blue" />
-                                    <select
-                                        id="genero"
-                                        name="genero"
-                                        className="w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent"
-                                        value={formData.genero}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="" disabled>Selecionar...</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                        <option value="Outro">Outro</option>
-                                    </select>
-                                </div>
-                            </label>
-
-
-                            <label htmlFor="email">
-                                Email
-                                <div className='relative'>
-                                    <FaEnvelope className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"  // Adicionei name aqui para o handleChange funcionar
-                                        className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-
-                            <label htmlFor="cpf">
-                                CPF
-                                <div className='relative'>
-                                    <FaIdCard className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                    <input
-                                        type="text"
-                                        id="cpf"
-                                        name="cpf"  // Adicionei name aqui para o handleChange funcionar
-                                        className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
-                                        value={formData.cpf}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-
-                            <label htmlFor="telefone">
-                                Telefone
-                                <div className='relative'>
-                                    <FaPhone className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                    <input
-                                        type="text"
-                                        id="telefone"
-                                        name="telefone"  // Adicionei name aqui para o handleChange funcionar
-                                        className='pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent'
-                                        value={formData.telefone}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-
-                        </div>
-
-                        <label htmlFor="data-nascimento">
+                        <label htmlFor="senha">
                             Senha
                             <div className='relative'>
                                 <FaLock className='absolute left-2 top-1/2 transform -translate-y-1/2 text-blue' />
-                                <input type="password" id="senha" name="senha" className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent' value={formData.senha} onChange={handleChange} />
+                                <input type="password" id="senha" name="senha" className='w-[28vw] pl-8 p-3 rounded-xl outline-none border-2 border-blue-400 shadow-md bg-transparent' value={formData.senha} onChange={handleChange} />
                             </div>
                         </label>
 
