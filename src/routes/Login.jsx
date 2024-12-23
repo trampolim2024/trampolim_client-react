@@ -41,12 +41,16 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const { token } = data;
-        localStorage.setItem("token", token);
+        const { token, tipo } = data;
+        localStorage.setItem("token", token); // Armazena o token
         toast.success("Login realizado com sucesso!");
 
-        // Redirecionar para o painel
-        navigate("/painel");
+        // Redireciona com base no tipo de usuário
+        if (tipo === "empreendedor") {
+          navigate("/painel-empreendedor");
+        } else if (tipo === "avaliador") {
+          navigate("/painel-avaliador");
+        }
       } else {
         const errorData = await response.json();
         setError(errorData.message || "Erro ao realizar o login.");
@@ -71,7 +75,7 @@ const Login = () => {
             <input
               type="text"
               name="email"
-              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
+              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all w-[350px]" 
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
@@ -79,7 +83,7 @@ const Login = () => {
             <input
               type="password"
               name="senha"
-              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all"
+              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all w-[350px]"
               placeholder="Senha"
               value={formData.senha}
               onChange={handleChange}
