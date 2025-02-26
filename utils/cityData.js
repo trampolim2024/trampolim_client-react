@@ -21,7 +21,7 @@ import saloa from "../src/cityImages/saloa.jpg";
 import brejao from "../src/cityImages/brejao.jpg";
 import garanhuns from "../src/cityImages/garanhuns.jpg";
 import caetes from "../src/cityImages/caetes.jpg";
-import capoeiras from "../src/cityImages/capoeiras.jpg";
+import capoeiras from "../src/cityImages/capoeiras.JPG";
 import jupi from "../src/cityImages/jupi.jpg";
 import calcado from "../src/cityImages/calçado.jpg";
 
