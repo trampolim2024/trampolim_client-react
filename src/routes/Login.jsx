@@ -28,7 +28,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/usuarios/login", {
+      const response = await fetch("https://trampolim-api-express.onrender.com/api/v1/auth/sign-in", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,22 +39,23 @@ const Login = () => {
         }),
       });
 
+      const data = await response.json(); // Lê a resposta como JSON diretamente
+      console.log(data); // Log da resposta completa
+
       if (response.ok) {
-        const data = await response.json();
-        const { token, tipo } = data;
+        const { token, user } = data.data; // Acessa o token e o usuário corretamente
         localStorage.setItem("token", token); // Armazena o token
         toast.success("Login realizado com sucesso!");
 
         // Redireciona com base no tipo de usuário
-        if (tipo === "empreendedor") {
+        if (user.tipo === "empreendedor") {
           navigate("/painel-empreendedor");
-        } else if (tipo === "avaliador") {
+        } else if (user.tipo === "avaliador") {
           navigate("/painel-avaliador");
         }
       } else {
-        const errorData = await response.json();
-        setError(errorData.message || "Erro ao realizar o login.");
-        toast.error(errorData.message || "Erro ao realizar o login.");
+        setError(data.message || "Erro ao realizar o login.");
+        toast.error(data.message || "Erro ao realizar o login.");
       }
     } catch (error) {
       setError("Erro ao conectar com o servidor.");
@@ -75,7 +76,7 @@ const Login = () => {
             <input
               type="text"
               name="email"
-              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all w-[350px]" 
+              className="p-1 py-2 rounded-lg outline-none border border-gray-300 focus:border-orange-600 duration-200 transition-all w-[350px]"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
@@ -88,9 +89,7 @@ const Login = () => {
               value={formData.senha}
               onChange={handleChange}
             />
-            <span className="text-blue text-base border-b border-transparent hover:border-orange-600 w-fit duration-300 transition-all cursor-pointer">
-              Esqueci minha senha!
-            </span>
+
             <button
               type="submit"
               className="font-bold text-center p-1 py-2 background-orange text-white rounded-lg outline-none border-none text-xl hover:background-blue duration-300 transition-all"
