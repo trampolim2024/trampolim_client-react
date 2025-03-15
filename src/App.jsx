@@ -18,6 +18,7 @@ import AppraiserProfile from "./pages/AppraiserProfile";
 import EnterprisingProfile from "./pages/EnterprisingProfile";
 import AnnoucementDetails from "./pages/AnnoucementDetails";
 import ProjectDetails from "./pages/ProjectDetails";
+import Users from "./pages/Users";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/detalhes-edital" element={<AnnoucementDetails />} />
           <Route path="/detalhes-projeto" element={<ProjectDetails />} />
           <Route path="/projetos" element={<Projects />} />
+          <Route path="/usuarios" element={<Users />} />
           <Route path="/editais" element={<Announcements />} />
           <Route path="/enviar-projeto" element={<SendProject />} />
           <Route path="/login" element={<Login />} />

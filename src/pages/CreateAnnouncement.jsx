@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { FaBook, FaCalendarAlt, FaFileAlt } from 'react-icons/fa';
-import Header from '../components/Header';
+import HeaderPanel from '../components/HeaderPanel';
 
 const CreateAnnouncement = () => {
   return (
     <main className='flex flex-col h-screen'>
 
-      <Header />
+      <HeaderPanel />
 
       <section className='h-screen p-4 flex flex-col items-center justify-center'>
         <form className='flex flex-col items-center gap-10 w-full'>

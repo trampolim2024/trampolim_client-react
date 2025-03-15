@@ -1,14 +1,14 @@
 import React from 'react'
-import Header from '../components/Header'
 import { FaBook, FaUser, FaClock, FaFile } from 'react-icons/fa';
 import { FaLightbulb, FaChartLine, FaCogs, FaVideo } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css'; // Importando o estilo do Toastify
+import HeaderPanel from '../components/HeaderPanel';
 
 const SendProject = () => {
     return (
         <main className='flex flex-col h-screen'>
 
-            <Header />
+            <HeaderPanel />
 
             <section className='h-auto p-4 flex flex-col items-center justify-center'>
                 <form className='flex flex-col items-center gap-10'>

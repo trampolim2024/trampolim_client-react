@@ -1,14 +1,14 @@
 import React from 'react'
-import HeaderAdmPanel from '../components/HeaderAdmPanel'
 import { FaFile, FaFilter, FaSearch } from 'react-icons/fa'
 import AnnouncementCard from '../components/AnnouncementCard'
 import { Link } from 'react-router-dom'
+import HeaderPanel from '../components/HeaderPanel'
 
 const Announcements = () => {
   return (
     <main className='flex flex-col h-screen'>
 
-      <HeaderAdmPanel />
+      <HeaderPanel />
 
       <div className='flex items-center gap-5 justify-center w-full py-10'>
 
