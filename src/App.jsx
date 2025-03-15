@@ -19,6 +19,7 @@ import EnterprisingProfile from "./pages/EnterprisingProfile";
 import AnnoucementDetails from "./pages/AnnoucementDetails";
 import ProjectDetails from "./pages/ProjectDetails";
 import Users from "./pages/Users";
+import EvalueteProjects from "./pages/EvalueteProjects";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/perfil-empreendedor" element={<EnterprisingProfile />} />
           <Route path="/detalhes-edital" element={<AnnoucementDetails />} />
           <Route path="/detalhes-projeto" element={<ProjectDetails />} />
+          <Route path="/avaliar-projetos" element={<EvalueteProjects />} />
           <Route path="/projetos" element={<Projects />} />
           <Route path="/usuarios" element={<Users />} />
           <Route path="/editais" element={<Announcements />} />

@@ -4,6 +4,8 @@ import Filter from "../components/FIlter";
 import Searchbar from "../components/Searchbar";
 import HeaderPanel from "../components/HeaderPanel";
 import { useNavigate } from "react-router-dom";
+import { FaEnvelope, FaPhone, FaUser } from "react-icons/fa";
+import ProjectCard from "../components/ProjectCard";
 
 const EnterprisingPanel = () => {
   // const navigate = useNavigate();
@@ -44,20 +46,49 @@ const EnterprisingPanel = () => {
   // }, [navigate]);
 
   return (
-    <main className="h-auto">
+    <section className='h-screen'>
       <HeaderPanel />
-      <section className="flex p-5 gap-3 h-screen justify-center items-center flex-col">
-       
-          <h2 className="text-blue text-3xl font-semibold p-5">Bem vindo, empreendedor!</h2>
 
+      <div className='flex items-center justify-center gap-[10%] w-full'>
+        <div className='w-[300px] h-[300px] rounded-full shadow-xl flex items-center justify-center'>
+          <FaUser className='text-blue text-9xl' />
+        </div>
 
-          <div className="background-white rounded-2xl shadow-xl h-[50%] w-[80vw]">
+        <div className='flex flex-col gap-2'>
+          <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
+            <div className='flex flex-col items-center justify-center gap-1'>
+              <FaUser className='text-blue text-3xl' />
+            </div>
 
+            <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
           </div>
-       
-      </section>
-      <Footer />
-    </main>
+
+          <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
+            <div className='flex flex-col items-center justify-center gap-1'>
+              <FaEnvelope className='text-blue text-3xl' />
+            </div>
+
+            <span className='w-full text-orange font-semibold text-center'>lucascordeiro@gmail.com</span>
+          </div>
+
+          <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
+            <div className='flex flex-col items-center justify-center gap-1'>
+              <FaPhone className='text-blue text-3xl' />
+            </div>
+
+            <span className='w-full text-orange font-semibold text-center'>87 98113-2735</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 className='text-4xl text-orange font-bold text-center py-20'>Projeto de Lucas Cordeiro</h2>
+
+      <div className='flex items-center justify-center'>
+        <ProjectCard />
+      </div>
+
+
+    </section>
   );
 };
 
