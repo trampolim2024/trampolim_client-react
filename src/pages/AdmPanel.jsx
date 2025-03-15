@@ -7,6 +7,7 @@ import HeaderAdmPanel from "../components/HeaderAdmPanel";
 import EnterprisingCard from "../components/EnterprisingCard";
 import AppraiserCard from "../components/AppraiserCard";
 import AnnouncementCard from "../components/AnnouncementCard";
+import HeaderPanel from "../components/HeaderPanel";
 
 const AdmPanel = () => {
   // const navigate = useNavigate();
@@ -48,7 +49,7 @@ const AdmPanel = () => {
 
   return (
     <main className="h-auto">
-      <HeaderAdmPanel />
+      <HeaderPanel />
       <section className="flex flex-col items-center justify-center p-5 gap-3">
 
         <div className="flex flex-col gap-5 items-center justify-center">
