@@ -43,19 +43,19 @@ const Login = () => {
       console.log(data); // Log da resposta completa
 
       if (response.ok) {
-        const { token, user } = data.data; // Acessa o token e o usuário corretamente
-        localStorage.setItem("token", token); // Armazena o token
+        const { token, user } = data.data;
+        console.log("Objeto user:", user); // Log para depuração
+        localStorage.setItem("token", token);
+        localStorage.setItem("user.tipo", user.tipo); // Ajuste conforme a estrutura real
         toast.success("Login realizado com sucesso!");
 
-        // Redireciona com base no tipo de usuário
         if (user.tipo === "empreendedor") {
           navigate("/painel-empreendedor");
         } else if (user.tipo === "avaliador") {
           navigate("/painel-avaliador");
+        } else {
+          navigate("/painel-adm");
         }
-      } else {
-        setError(data.message || "Erro ao realizar o login.");
-        toast.error(data.message || "Erro ao realizar o login.");
       }
     } catch (error) {
       setError("Erro ao conectar com o servidor.");

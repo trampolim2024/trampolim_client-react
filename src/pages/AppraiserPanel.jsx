@@ -6,52 +6,50 @@ import HeaderPanel from "../components/HeaderPanel";
 import { useNavigate } from "react-router-dom";
 
 const AppraiserPanel = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const token = localStorage.getItem("token");
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
 
-        if (!token) {
-          console.log("Token não encontrado. Redirecionando para login.");
-          navigate("/login");
-          return;
-        }
+  //       if (!token) {
+  //         console.log("Token não encontrado. Redirecionando para login.");
+  //         navigate("/login");
+  //         return;
+  //       }
 
-        const response = await fetch("http://localhost:3000/usuarios/painel", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  //       const response = await fetch("http://localhost:3000/usuarios/painel", {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (response.ok) {
-          console.log("Autenticação bem-sucedida. Usuário autorizado a acessar o painel.");
-        } else if (response.status === 401 || response.status === 403) {
-          console.log("Token inválido ou expirado. Redirecionando para login.");
-          navigate("/login");
-        } else {
-          console.log("Erro desconhecido:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Erro na autenticação:", error);
-        navigate("/login");
-      }
-    };
+  //       if (response.ok) {
+  //         console.log("Autenticação bem-sucedida. Usuário autorizado a acessar o painel.");
+  //       } else if (response.status === 401 || response.status === 403) {
+  //         console.log("Token inválido ou expirado. Redirecionando para login.");
+  //         navigate("/login");
+  //       } else {
+  //         console.log("Erro desconhecido:", response.statusText);
+  //       }
+  //     } catch (error) {
+  //       console.error("Erro na autenticação:", error);
+  //       navigate("/login");
+  //     }
+  //   };
 
-    checkAuthentication();
-  }, [navigate]);
+  //   checkAuthentication();
+  // }, [navigate]);
 
   return (
     <main className="h-auto">
       <HeaderPanel />
       <section className="flex p-5 gap-3">
-        <Filter />
-        <div className="flex flex-col">
+        <div className="flex flex-col h-screen">
           <div className="flex flex-col">
-            <h1 className="text-orange text-3xl font-semibold text-center my-3">Trilhas e cursos gratuitos</h1>
-            <Searchbar />
+           
           </div>
         </div>
       </section>

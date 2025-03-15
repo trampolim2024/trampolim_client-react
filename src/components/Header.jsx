@@ -20,7 +20,6 @@ const Header = () => {
                     Avaliador
                 </Link>
 
-               
 
                 <Link to="/login" className='background-orange p-2 px-5 rounded-lg font-semibold text-blue text-lg hover:text-orange hover:background-blue transition-all duration-300'>
                     Login
