@@ -47,8 +47,9 @@ const Login = () => {
         console.log("Objeto user:", user); // Log para depuração
         localStorage.setItem("token", token);
         localStorage.setItem("user.tipo", user.tipo); // Ajuste conforme a estrutura real
+        localStorage.setItem("user.id", user._id); // Armazenar o ID do usuário
         toast.success("Login realizado com sucesso!");
-
+      
         if (user.tipo === "empreendedor") {
           navigate("/painel-empreendedor");
         } else if (user.tipo === "avaliador") {

@@ -18,77 +18,101 @@ const SendProject = () => {
         diferencialInovacao: '',
         modeloNegocio: '',
         tecnologiasUtilizadas: '',
-        linkPitch: ''
-    });
-
-    const navigate = useNavigate(); // Hook para redirecionamento
-
-    const handleChange = (e) => {
+        linkPitch: '',
+      });
+    
+      const navigate = useNavigate();
+    
+      const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
-            ...formData,
-            [name]: value
+          ...formData,
+          [name]: value,
         });
-    };
-
-    const handleIntegranteChange = (index, value) => {
+      };
+    
+      const handleIntegranteChange = (index, value) => {
         const newIntegrantes = [...formData.integrantes];
         newIntegrantes[index] = value;
         setFormData({
-            ...formData,
-            integrantes: newIntegrantes
+          ...formData,
+          integrantes: newIntegrantes,
         });
-    };
-
-    const handleSubmit = async (e) => {
+      };
+    
+      const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Verifica se os campos obrigatórios estão preenchidos
-            if (!formData.edital || !formData.modeloNegocio) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
+          // Verifica se os campos obrigatórios estão preenchidos
+          const requiredFields = [
+            'nomeProjeto',
+            'nomeLider',
+            'estagioIdeia',
+            'edital',
+            'descricaoIdeia',
+            'diferencialInovacao',
+            'modeloNegocio',
+            'tecnologiasUtilizadas',
+            'linkPitch',
+          ];
+    
+          for (const field of requiredFields) {
+            if (!formData[field]) {
+              alert(`Por favor, preencha o campo: ${field}`);
+              return;
             }
-
-            const dadosEnviados = {
-                ...formData,
-                integrantes: formData.integrantes.filter(integrante => integrante.trim() !== '') // Remove valores vazios
-            };
-
-            console.log('Dados enviados:', dadosEnviados);
-            const response = await axios.post('https://trampolim-api-express.onrender.com/api/v1/projects', dadosEnviados);
-            console.log('Projeto criado com sucesso:', response.data);
-
-            // Exibe uma notificação de sucesso
-            toast.success('Projeto criado com sucesso!', {
-                position: "top-right",
-                autoClose: 3000, // Fecha automaticamente após 3 segundos
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-
-            // Redireciona para a rota "/perfil-empreendedor" após 3 segundos
-            setTimeout(() => {
-                navigate('/perfil-empreendedor');
-            }, 3000);
-
+          }
+    
+          // Obtém o userId do localStorage
+          const userId = localStorage.getItem("user.id");
+          if (!userId) {
+            alert('Usuário não autenticado. Faça login novamente.');
+            return;
+          }
+    
+          // Prepara os dados para envio, incluindo o userId
+          const dadosEnviados = {
+            ...formData,
+            integrantes: formData.integrantes.filter(integrante => integrante.trim() !== ''), // Remove valores vazios
+            userId, // Adiciona o userId ao corpo da requisição
+          };
+    
+          console.log('Dados enviados:', dadosEnviados);
+          const response = await axios.post('https://trampolim-api-express.onrender.com/api/v1/projects', dadosEnviados);
+          console.log('Projeto criado com sucesso:', response.data);
+    
+          // Exibe uma notificação de sucesso
+          toast.success('Projeto criado com sucesso!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+    
+          // Redireciona para a rota "/perfil-empreendedor" após 3 segundos
+          setTimeout(() => {
+            navigate('/perfil-empreendedor');
+          }, 3000);
+    
         } catch (error) {
-            console.error('Erro ao criar projeto:', error);
-
-            // Exibe uma notificação de erro
-            toast.error('Erro ao criar projeto. Tente novamente.', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+          console.error('Erro ao criar projeto:', error.response ? error.response.data : error.message);
+    
+          // Exibe uma notificação de erro com detalhes
+          toast.error(`Erro ao criar projeto: ${error.response ? error.response.data.message : error.message}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
-    };
+      };
+    
 
 
     return (
