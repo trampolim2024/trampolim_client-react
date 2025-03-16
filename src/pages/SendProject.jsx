@@ -1,311 +1,352 @@
-import React, { useState } from 'react';
-import { FaBook, FaUser, FaClock, FaFile } from 'react-icons/fa';
-import { FaLightbulb, FaChartLine, FaCogs, FaVideo } from 'react-icons/fa';
-import 'react-toastify/dist/ReactToastify.css'; // Importando o estilo do Toastify
-import HeaderPanel from '../components/HeaderPanel';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { FaBook, FaUser, FaClock, FaFile, FaLightbulb, FaChartLine, FaCogs, FaVideo } from "react-icons/fa";
+import HeaderPanel from "../components/HeaderPanel";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SendProject = () => {
-    const [formData, setFormData] = useState({
-        nomeProjeto: '',
-        nomeLider: '',
-        integrantes: ['', '', '', ''],
-        estagioIdeia: '',
-        edital: '',
-        descricaoIdeia: '',
-        diferencialInovacao: '',
-        modeloNegocio: '',
-        tecnologiasUtilizadas: '',
-        linkPitch: '',
-      });
-    
-      const navigate = useNavigate();
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-          ...formData,
-          [name]: value,
-        });
-      };
-    
-      const handleIntegranteChange = (index, value) => {
-        const newIntegrantes = [...formData.integrantes];
-        newIntegrantes[index] = value;
-        setFormData({
-          ...formData,
-          integrantes: newIntegrantes,
-        });
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          // Verifica se os campos obrigatórios estão preenchidos
-          const requiredFields = [
-            'nomeProjeto',
-            'nomeLider',
-            'estagioIdeia',
-            'edital',
-            'descricaoIdeia',
-            'diferencialInovacao',
-            'modeloNegocio',
-            'tecnologiasUtilizadas',
-            'linkPitch',
-          ];
-    
-          for (const field of requiredFields) {
-            if (!formData[field]) {
-              alert(`Por favor, preencha o campo: ${field}`);
-              return;
-            }
-          }
-    
-          // Obtém o userId do localStorage
-          const userId = localStorage.getItem("user.id");
-          if (!userId) {
-            alert('Usuário não autenticado. Faça login novamente.');
-            return;
-          }
-    
-          // Prepara os dados para envio, incluindo o userId
-          const dadosEnviados = {
-            ...formData,
-            integrantes: formData.integrantes.filter(integrante => integrante.trim() !== ''), // Remove valores vazios
-            userId, // Adiciona o userId ao corpo da requisição
-          };
-    
-          console.log('Dados enviados:', dadosEnviados);
-          const response = await axios.post('https://trampolim-api-express.onrender.com/api/v1/projects', dadosEnviados);
-          console.log('Projeto criado com sucesso:', response.data);
-    
-          // Exibe uma notificação de sucesso
-          toast.success('Projeto criado com sucesso!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-    
-          // Redireciona para a rota "/perfil-empreendedor" após 3 segundos
-          setTimeout(() => {
-            navigate('/perfil-empreendedor');
-          }, 3000);
-    
-        } catch (error) {
-          console.error('Erro ao criar projeto:', error.response ? error.response.data : error.message);
-    
-          // Exibe uma notificação de erro com detalhes
-          toast.error(`Erro ao criar projeto: ${error.response ? error.response.data.message : error.message}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+  const [formData, setFormData] = useState({
+    nomeProjeto: "",
+    nomeLider: "",
+    integrantes: ["", "", "", ""],
+    estagioIdeia: "",
+    edital: "",
+    descricaoIdeia: "",
+    diferencialInovacao: "",
+    modeloNegocio: "",
+    tecnologiasUtilizadas: "",
+    linkPitch: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleIntegranteChange = (index, value) => {
+    const newIntegrantes = [...formData.integrantes];
+    newIntegrantes[index] = value;
+    setFormData({
+      ...formData,
+      integrantes: newIntegrantes,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Verifica se os campos obrigatórios estão preenchidos
+      const requiredFields = [
+        "nomeProjeto",
+        "nomeLider",
+        "estagioIdeia",
+        "edital",
+        "descricaoIdeia",
+        "diferencialInovacao",
+        "modeloNegocio",
+        "tecnologiasUtilizadas",
+        "linkPitch",
+      ];
+
+      for (const field of requiredFields) {
+        if (!formData[field]) {
+          alert(`Por favor, preencha o campo: ${field}`);
+          return;
         }
+      }
+
+      // Obtém o userId do localStorage
+      const userId = localStorage.getItem("user.id");
+      if (!userId) {
+        alert("Usuário não autenticado. Faça login novamente.");
+        return;
+      }
+
+      // Prepara os dados para envio, incluindo o userId
+      const dadosEnviados = {
+        ...formData,
+        integrantes: formData.integrantes.filter((integrante) => integrante.trim() !== ""), // Remove valores vazios
+        userId, // Adiciona o userId ao corpo da requisição
       };
-    
 
+      console.log("Dados enviados:", dadosEnviados);
+      const response = await axios.post(
+        "https://trampolim-api-express.onrender.com/api/v1/projects",
+        dadosEnviados
+      );
+      console.log("Projeto criado com sucesso:", response.data);
 
-    return (
-        <main className='flex flex-col h-screen'>
-            <HeaderPanel />
-            <section className='h-auto p-4 flex flex-col items-center justify-center'>
-                <form className='flex flex-col items-center gap-10' onSubmit={handleSubmit}>
-                    <div className='flex items-center gap-3 py-10'>
-                        <FaBook className='text-orange' size={40} />
-                        <h2 className='text-orange text-4xl uppercase'>Submissão de projeto</h2>
-                    </div>
+      // Exibe uma notificação de sucesso
+      toast.success("Projeto criado com sucesso!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-                    <div className='flex items-center flex-col justify-center gap-10 w-[100vw] border-b-2 border-orange-300 pb-10'>
-                        <label htmlFor="nomeProjeto">
-                            Nome do projeto
-                            <div className='relative'>
-                                <FaLightbulb className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                <input
-                                    type="text"
-                                    id="nomeProjeto"
-                                    className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent w-[510px]'
-                                    name="nomeProjeto"
-                                    value={formData.nomeProjeto}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </label>
+      // Redireciona para a rota "/perfil-empreendedor" após 3 segundos
+      setTimeout(() => {
+        navigate("/perfil-empreendedor");
+      }, 3000);
+    } catch (error) {
+      console.error("Erro ao criar projeto:", error.response ? error.response.data : error.message);
 
-                        <label htmlFor="nomeLider">
-                            Nome do líder
-                            <div className='relative'>
-                                <FaUser className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                <input
-                                    type="text"
-                                    id="nomeLider"
-                                    className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent w-[510px]'
-                                    name="nomeLider"
-                                    value={formData.nomeLider}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </label>
+      // Exibe uma notificação de erro com detalhes
+      toast.error(`Erro ao criar projeto: ${error.response ? error.response.data.message : error.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
-                        <div className='flex items-center gap-4'>
-                            <div className='flex flex-col gap-8'>
-                                {[0, 1].map((index) => (
-                                    <label key={index} htmlFor={`integrante${index + 2}`}>
-                                        Nome do {index + 2}° integrante
-                                        <div className='relative'>
-                                            <FaUser className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                            <input
-                                                type="text"
-                                                id={`integrante${index + 2}`}
-                                                className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                                value={formData.integrantes[index]}
-                                                onChange={(e) => handleIntegranteChange(index, e.target.value)}
-                                            />
-                                        </div>
-                                    </label>
-                                ))}
-                            </div>
+  return (
+    <main className="flex flex-col h-screen">
+      <HeaderPanel />
+      <section className="h-auto p-4 flex flex-col items-center justify-center">
+        <div className="max-w-4xl w-full bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 p-6">
+          <h2 className="text-2xl font-bold text-blue text-center mb-6">Submissão de Projeto</h2>
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
+            {/* Coluna 1 */}
+            <div className="space-y-4">
+              {/* Nome do Projeto */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="nomeProjeto" className="text-blue font-semibold">
+                  Nome do Projeto
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaLightbulb className="text-blue text-xl" />
+                  <input
+                    type="text"
+                    id="nomeProjeto"
+                    name="nomeProjeto"
+                    placeholder="Nome do Projeto"
+                    value={formData.nomeProjeto}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
 
-                            <div className='flex flex-col gap-8'>
-                                {[2, 3].map((index) => (
-                                    <label key={index} htmlFor={`integrante${index + 2}`}>
-                                        Nome do {index + 2}° integrante
-                                        <div className='relative'>
-                                            <FaUser className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                            <input
-                                                type="text"
-                                                id={`integrante${index + 2}`}
-                                                className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                                value={formData.integrantes[index]}
-                                                onChange={(e) => handleIntegranteChange(index, e.target.value)}
-                                            />
-                                        </div>
-                                    </label>
-                                ))}
-                            </div>
-                        </div>
+              {/* Nome do Líder */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="nomeLider" className="text-blue font-semibold">
+                  Nome do Líder
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-blue text-xl" />
+                  <input
+                    type="text"
+                    id="nomeLider"
+                    name="nomeLider"
+                    placeholder="Nome do Líder"
+                    value={formData.nomeLider}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
 
-                        <label htmlFor="estagioIdeia">
-                            Estágio da sua ideia:
-                            <div className='relative'>
-                                <FaClock className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                <select
-                                    name="estagioIdeia"
-                                    id="estagioIdeia"
-                                    className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent w-[510px]'
-                                    value={formData.estagioIdeia}
-                                    onChange={handleChange}
-                                >
-                                    <option value="Conceitual (Pesquisa)/Ideação">Conceitual (Pesquisa)/Ideação</option>
-                                    <option value="Em Desenvolvimento">Em Desenvolvimento</option>
-                                    <option value="Protótipo de Baixa Fidelidade">Protótipo de Baixa Fidelidade</option>
-                                    <option value="MVP sem clientes pagantes">MVP sem clientes pagantes</option>
-                                    <option value="MVP com clientes pagantes">MVP com clientes pagantes</option>
-                                </select>
-                            </div>
-                        </label>
+            {/* Coluna 2 */}
+            <div className="space-y-4">
+              {/* Estágio da Ideia */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="estagioIdeia" className="text-blue font-semibold">
+                  Estágio da Ideia
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaClock className="text-blue text-xl" />
+                  <select
+                    id="estagioIdeia"
+                    name="estagioIdeia"
+                    value={formData.estagioIdeia}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  >
+                    <option value="">Selecione o estágio</option>
+                    <option value="Conceitual (Pesquisa)/Ideação">Conceitual (Pesquisa)/Ideação</option>
+                    <option value="Em Desenvolvimento">Em Desenvolvimento</option>
+                    <option value="Protótipo de Baixa Fidelidade">Protótipo de Baixa Fidelidade</option>
+                    <option value="MVP sem clientes pagantes">MVP sem clientes pagantes</option>
+                    <option value="MVP com clientes pagantes">MVP com clientes pagantes</option>
+                  </select>
+                </div>
+              </div>
 
-                        <label htmlFor="edital">
-                            Para qual edital você está submetendo seu projeto:
-                            <div className='relative'>
-                                <FaFile className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                <select
-                                    name="edital"
-                                    id="edital"
-                                    className='pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent w-[510px]'
-                                    value={formData.edital}
-                                    onChange={handleChange}
-                                >
-                                    <option value="Edital 2025.1">Edital 2025.1</option>
-                                    <option value="Edital 2025.2">Edital 2025.2</option>
-                                </select>
-                            </div>
-                        </label>
-                    </div>
+              {/* Edital */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="edital" className="text-blue font-semibold">
+                  Edital
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaFile className="text-blue text-xl" />
+                  <select
+                    id="edital"
+                    name="edital"
+                    value={formData.edital}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  >
+                    <option value="">Selecione o edital</option>
+                    <option value="Edital 2025.1">Edital 2025.1</option>
+                    <option value="Edital 2025.2">Edital 2025.2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-                    <div className='w-[75vw] pb-10 pt-10'>
-                        <div className='flex flex-col gap-4'>
-                            <label htmlFor="descricaoIdeia">
-                                Descrição da sua ideia inovadora:
-                                <div className='relative'>
-                                    <FaLightbulb className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                    <textarea
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                        name="descricaoIdeia"
-                                        value={formData.descricaoIdeia}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
+            {/* Integrantes */}
+            <div className="col-span-2 space-y-4">
+              <label className="text-blue font-semibold">Integrantes</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[0, 1, 2, 3].map((index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <FaUser className="text-blue text-xl" />
+                    <input
+                      type="text"
+                      placeholder={`Nome do ${index + 1}° integrante`}
+                      value={formData.integrantes[index]}
+                      onChange={(e) => handleIntegranteChange(index, e.target.value)}
+                      className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-                            <label htmlFor="diferencialInovacao">
-                                Descreva o que sua ideia tem de inovadora comparada as demais:
-                                <div className='relative'>
-                                    <FaLightbulb className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                    <textarea
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                        name="diferencialInovacao"
-                                        value={formData.diferencialInovacao}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
+            {/* Campos que ocupam a largura total */}
+            <div className="col-span-2 space-y-4">
+              {/* Descrição da Ideia */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="descricaoIdeia" className="text-blue font-semibold">
+                  Descrição da Ideia
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaLightbulb className="text-blue text-xl" />
+                  <textarea
+                    id="descricaoIdeia"
+                    name="descricaoIdeia"
+                    placeholder="Descrição da Ideia"
+                    value={formData.descricaoIdeia}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
 
-                            <label htmlFor="modeloNegocio">
-                                Modelo de negócio
-                                <div className='relative'>
-                                    <FaChartLine className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                    <input
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                        name="modeloNegocio"
-                                        value={formData.modeloNegocio}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
+              {/* Diferencial e Inovação */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="diferencialInovacao" className="text-blue font-semibold">
+                  Diferencial e Inovação
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaLightbulb className="text-blue text-xl" />
+                  <textarea
+                    id="diferencialInovacao"
+                    name="diferencialInovacao"
+                    placeholder="Diferencial e Inovação"
+                    value={formData.diferencialInovacao}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
 
-                            <label htmlFor="tecnologiasUtilizadas">
-                                Descreva quais tecnologias serão utilizadas:
-                                <div className='relative'>
-                                    <FaCogs className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                    <textarea
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                        name="tecnologiasUtilizadas"
-                                        value={formData.tecnologiasUtilizadas}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
+              {/* Modelo de Negócio */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="modeloNegocio" className="text-blue font-semibold">
+                  Modelo de Negócio
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaChartLine className="text-blue text-xl" />
+                  <input
+                    type="text"
+                    id="modeloNegocio"
+                    name="modeloNegocio"
+                    placeholder="Modelo de Negócio"
+                    value={formData.modeloNegocio}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
 
-                            <label htmlFor="linkPitch">
-                                Link do pitch (vídeo de até 2 min)
-                                <div className='relative'>
-                                    <FaVideo className='absolute left-2 top-1/2 transform -translate-y-1/2 text-orange' />
-                                    <input
-                                        className='w-full pl-8 p-3 rounded-xl outline-none border-2 border-orange-400 shadow-md bg-transparent'
-                                        name="linkPitch"
-                                        value={formData.linkPitch}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </label>
-                        </div>
-                    </div>
+              {/* Tecnologias Utilizadas */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="tecnologiasUtilizadas" className="text-blue font-semibold">
+                  Tecnologias Utilizadas
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaCogs className="text-blue text-xl" />
+                  <textarea
+                    id="tecnologiasUtilizadas"
+                    name="tecnologiasUtilizadas"
+                    placeholder="Tecnologias Utilizadas"
+                    value={formData.tecnologiasUtilizadas}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
 
-                    <button type="submit" className='p-3 outline-none background-orange rounded-xl border-none text-white w-[20vw] font-semibold'>Submeter</button>
-                </form>
-            </section>
-        </main>
-    );
+              {/* Link do Pitch */}
+              <div className="flex flex-col gap-1">
+                <label htmlFor="linkPitch" className="text-blue font-semibold">
+                  Link do Pitch
+                </label>
+                <div className="flex items-center gap-2">
+                  <FaVideo className="text-blue text-xl" />
+                  <input
+                    type="url"
+                    id="linkPitch"
+                    name="linkPitch"
+                    placeholder="Link do Pitch"
+                    value={formData.linkPitch}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-orange-400 rounded-md focus:outline-none focus:border-blue"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Botão de Submissão */}
+            <div className="col-span-2">
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+              >
+                Submeter
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  );
 };
 
 export default SendProject;
