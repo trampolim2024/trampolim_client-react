@@ -36,12 +36,13 @@ const HeaderPanel = () => {
         {/* Links para Admin */}
         {userType === "admin" && (
           <>
+              <Link to="/painel-adm" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
+              Painel
+            </Link>
             <Link to="/editais" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
               Editais
             </Link>
-            <Link to="/usuarios" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
-              Usuários
-            </Link>
+        
             <Link to="/projetos" className='font-semibold text-blue text-xl hover:text-orange transition-all duration-300'>
               Projetos
             </Link>

@@ -20,6 +20,8 @@ import AnnoucementDetails from "./pages/AnnoucementDetails";
 import ProjectDetails from "./pages/ProjectDetails";
 import Users from "./pages/Users";
 import EvalueteProjects from "./pages/EvalueteProjects";
+import AllAppraisers from "./pages/AllAppraisers";
+import AllEnterprisings from "./pages/AllEnterprisings";
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
           <Route path="/projetos" element={<Projects />} />
           <Route path="/usuarios" element={<Users />} />
           <Route path="/editais" element={<Announcements />} />
+          <Route path="/all-appraisers" element={<AllAppraisers />} />
+          <Route path="/all-enterprisings" element={<AllEnterprisings />} />
           <Route path="/enviar-projeto" element={<SendProject />} />
           <Route path="/login" element={<Login />} />
           <Route path="/painel-empreendedor" element={<ProtectedRoutes><EnterprisingPanel /></ProtectedRoutes>} />
