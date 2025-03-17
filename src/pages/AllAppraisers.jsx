@@ -53,7 +53,7 @@ const AllAppraisers = () => {
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         {/* Título */}
-        <h1 className="text-4xl font-bold text-blue-900 mb-8 text-center">
+        <h1 className="text-4xl font-bold text-blue mb-8 text-center">
           Todos os Avaliadores
         </h1>
 
