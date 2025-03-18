@@ -1,157 +1,63 @@
-import React from 'react'
-import { FaBusinessTime, FaClock, FaFile, FaPenAlt, FaUser, FaVideo } from 'react-icons/fa'
-import { FaComputer } from 'react-icons/fa6'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ProjectDetailsCard from '../components/ProjectDetailsCard';
+import HeaderPanel from '../components/HeaderPanel';
 
 const ProjectDetails = () => {
+    const { id } = useParams(); // Obtém o ID do projeto da URL
+    const [project, setProject] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchProjectDetails = async () => {
+            try {
+                const response = await axios.get(`https://trampolim-api-express.onrender.com/api/v1/projects/${id}`);
+                setProject(response.data.data); // Atualiza o estado com os detalhes do projeto
+            } catch (error) {
+                console.error('Erro ao buscar detalhes do projeto:', error);
+                setError('Erro ao carregar os detalhes do projeto. Tente novamente mais tarde.');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjectDetails();
+    }, [id]);
+
+    if (loading) {
+        return <div className="flex justify-center items-center h-screen">Carregando detalhes do projeto...</div>;
+    }
+
+    if (error) {
+        return <div className="flex justify-center items-center h-screen text-red-500">{error}</div>;
+    }
+
+    if (!project) {
+        return <div className="flex justify-center items-center h-screen">Projeto não encontrado.</div>;
+    }
+
     return (
-        <section className='h-auto flex items-center justify-center py-10'>
-            <div className='flex items-center justify-center gap-[15%] w-full'>
-
-                <div className='bg-white w-[300px] h-[300px] rounded-full shadow-xl flex items-center justify-center'>
-                    <img src="logos/trampolim-header.svg" alt="Logo do Programa Trampolim" />
-                </div>
-
-
-                <div className='flex flex-col gap-3 w-[30%]'>
-                    <h1 className='text-orange text-7xl font-bold text-center py-5'>Inclusive Pet</h1>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Integrantes</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaUser className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
-                    </div>
-
-                    <div className='flex items-center gap-3'>
-                        <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                            <div className='flex flex-col items-center justify-center gap-1'>
-                                <FaUser className='text-blue text-3xl' />
-                            </div>
-
-                            <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
-                        </div>
-
-                        <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                            <div className='flex flex-col items-center justify-center gap-1'>
-                                <FaUser className='text-blue text-3xl' />
-                            </div>
-
-                            <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
-                        </div>
-                    </div>
-
-                    <div className='flex items-center gap-3'>
-                        <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                            <div className='flex flex-col items-center justify-center gap-1'>
-                                <FaUser className='text-blue text-3xl' />
-                            </div>
-
-                            <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
-                        </div>
-
-                        <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                            <div className='flex flex-col items-center justify-center gap-1'>
-                                <FaUser className='text-blue text-3xl' />
-                            </div>
-
-                            <span className='w-full text-orange font-semibold text-center'>Lucas Cordeiro</span>
-                        </div>
-                    </div>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Estágio da ideia</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaClock className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>MVP</span>
-                    </div>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Edital </h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaFile className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>2025.1</span>
-                    </div>
-
-                    <h2 className='text-2xl text-orange font-bold'>Descrição da ideia</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaPenAlt className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>
-                            Duis duis sunt ullamco ex veniam exercitation.
-                        </span>
-                    </div>
-
-                    <h2 className='text-2xl text-orange font-bold'>Diferencias da ideia</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaPenAlt className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>
-                            Duis duis sunt ullamco ex veniam exercitation.
-                        </span>
-                    </div>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Modelo de negóico</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaBusinessTime className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>
-                            Incubação
-                        </span>
-                    </div>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Tecnologias utilizadas</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaComputer className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>
-                            Java, React, Node
-                        </span>
-                    </div>
-
-
-                    <h2 className='text-2xl text-orange font-bold'>Link do pitch</h2>
-
-                    <div className='flex items-center gap-2 bg-white w-full p-3 rounded-lg shadow-xl'>
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                            <FaVideo className='text-blue text-3xl' />
-                        </div>
-
-                        <span className='w-full text-orange font-semibold text-center'>
-                            youtube.com.br/pitch
-                        </span>
-                    </div>
-
-                </div>
-
+        <section className='h-auto'>
+            <HeaderPanel />
+            <div className="flex justify-center items-center h-screen">
+                <ProjectDetailsCard
+                    nomeProjeto={project.nomeProjeto}
+                    nomeLider={project.nomeLider}
+                    integrantes={project.integrantes}
+                    estagioIdeia={project.estagioIdeia}
+                    edital={project.edital}
+                    descricaoIdeia={project.descricaoIdeia}
+                    diferencialInovacao={project.diferencialInovacao}
+                    modeloNegocio={project.modeloNegocio}
+                    tecnologiasUtilizadas={project.tecnologiasUtilizadas}
+                    linkPitch={project.linkPitch}
+                />
             </div>
         </section>
-    )
-}
 
-export default ProjectDetails
+    );
+};
+
+export default ProjectDetails;

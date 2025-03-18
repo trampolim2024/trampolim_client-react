@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AppraiserCard from "../components/AppraiserCard";
 import Pagination from "../components/Pagination"; // Importe o componente de paginação
+import HeaderPanel from "../components/HeaderPanel";
 
 const AllAppraisers = () => {
   const [avaliadores, setAvaliadores] = useState([]);
@@ -50,10 +51,11 @@ const AllAppraisers = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
+    <main className="min-h-screen bg-gray-50  flex flex-col">
+      <HeaderPanel/>
       <div className="max-w-7xl mx-auto">
         {/* Título */}
-        <h1 className="text-4xl font-bold text-blue mb-8 text-center">
+        <h1 className="text-4xl font-bold text-blue mb-8 text-center mt-5">
           Todos os Avaliadores
         </h1>
 

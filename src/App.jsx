@@ -22,6 +22,8 @@ import Users from "./pages/Users";
 import EvalueteProjects from "./pages/EvalueteProjects";
 import AllAppraisers from "./pages/AllAppraisers";
 import AllEnterprisings from "./pages/AllEnterprisings";
+import EnterprisingDetails from "./pages/EnterprisingDetails";
+import AppraiserDetails from "./pages/AppraiserDetails";
 
 
 function App() {
@@ -41,13 +43,15 @@ function App() {
           <Route path="/perfil-avaliador" element={<AppraiserProfile />} />
           <Route path="/perfil-empreendedor" element={<EnterprisingProfile />} />
           <Route path="/detalhes-edital" element={<AnnoucementDetails />} />
-          <Route path="/detalhes-projeto" element={<ProjectDetails />} />
+          <Route path="/detalhes-projeto/:id" element={<ProjectDetails />} />
           <Route path="/avaliar-projetos" element={<EvalueteProjects />} />
           <Route path="/projetos" element={<Projects />} />
           <Route path="/usuarios" element={<Users />} />
           <Route path="/editais" element={<Announcements />} />
-          <Route path="/all-appraisers" element={<AllAppraisers />} />
-          <Route path="/all-enterprisings" element={<AllEnterprisings />} />
+          <Route path="/todos-avaliadores" element={<AllAppraisers />} />
+          <Route path="/todos-empreendedores" element={<AllEnterprisings />} />
+          <Route path="/perfil-empreendedor/:id" element={<EnterprisingDetails />} />
+          <Route path="/perfil-avaliador/:id" element={<AppraiserDetails />} />
           <Route path="/enviar-projeto" element={<SendProject />} />
           <Route path="/login" element={<Login />} />
           <Route path="/painel-empreendedor" element={<ProtectedRoutes><EnterprisingPanel /></ProtectedRoutes>} />

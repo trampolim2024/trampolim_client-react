@@ -47,7 +47,7 @@ const AdmPanel = () => {
           </div>
           <button
             className='orange-button'
-            onClick={() => navigate("/all-enterprisings")}
+            onClick={() => navigate("/todos-empreendedores")}
           >
             Ver mais
           </button>
@@ -66,7 +66,7 @@ const AdmPanel = () => {
           </div>
           <button
             className='orange-button'
-            onClick={() => navigate("/all-appraisers")}
+            onClick={() => navigate("/todos-avaliadores")}
           >
             Ver mais
           </button>
